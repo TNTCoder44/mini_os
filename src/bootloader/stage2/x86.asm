@@ -2,6 +2,29 @@ bits 16
 
 section _TEXT class=CODE
 
+;
+; U4D
+;
+
+global __U4D
+__U4D:
+    shl edx, 16             ; dx to upper half of edx
+    mov dx, ax              ; edx - dividend
+    mov eax, edx            ; eax - dividend   
+    xor edx, edx          
+
+    shl ecx, 16             ; cx to upper half of ecxy
+    mov cx, bx              ; ecx - divisor
+
+    div ecx                 ; eax - quot, edx - remainder
+    mov ebx, edx
+    mov ecx, edx
+    shr ecx, 16
+
+    mov edx, eax
+    shr edx, 16
+
+    ret
 
 ;
 ; void _cdecl x86_div64_32(uint64_t dividend, uint32_t divisor, uint64_t* quotientOut, uint32_t* remainderOut);
