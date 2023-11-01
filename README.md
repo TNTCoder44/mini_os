@@ -1,7 +1,7 @@
 # Mini_os
 ## Building
 
-IMPORTANT: Note that you must have Open-Watcom 2.0 installed by now.
+IMPORTANT: You must have Open-Watcom 2.0 installed by now.
 
 
 First, install the following dependencies:
