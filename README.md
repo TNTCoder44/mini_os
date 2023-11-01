@@ -24,3 +24,12 @@ Then run:
 make         
 make -s
 ```
+
+
+Finally, run:
+```sh
+./run.sh
+```
+
+
+
