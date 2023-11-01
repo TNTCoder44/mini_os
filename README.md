@@ -21,6 +21,6 @@ NOTE: to install all the required packages on Arch, you need an [AUR helper](htt
 Then run: 
 
 ```sh
-make         \
+make         
 make -s
 ```
