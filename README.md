@@ -1,7 +1,7 @@
 # Mini_os
 ## Building
 
-IMPORTANT: You must have Open-Watcom 2.0 installed under /usr/bin/ by now.
+IMPORTANT: You must have Open-Watcom 2.0 installed under /usr/bin/ by now, or else it won't work.
 
 
 First, install the following dependencies:
