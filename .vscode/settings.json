@@ -1,0 +1,7 @@
+{
+  "C_Cpp.default.compilerPath": "/usr/bin/watcom/binl/wcc",
+  "files.associations": {
+    "compare": "cpp",
+    "cstdint": "cpp"
+  }
+}
