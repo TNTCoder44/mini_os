@@ -1,7 +1,9 @@
 #include "fat.h"
+#include "stdint.h"
 
-#define true 1
-#define false 0
+#define SECTOR_SIZE 512
+
+#pragma pack(push, 1)
 
 typedef struct
 {
@@ -30,16 +32,39 @@ typedef struct
 
     // ... we don't care about code ...
 
-} __attribute__((packed)) BootSector;
+} FAT_BootSector;
 
-BootSector g_BootSector;
+#pragma pack(pop)
+
+typedef struct
+{
+    union
+    {
+        FAT_BootSector BootSector;
+        uint8_t BootSectorBytes[SECTOR_SIZE];
+    } BS;
+} FAT_Data;
+
+static FAT_Data far *g_Data;
+
 uint8_t *g_Fat = NULL;
 DirectoryEntry *g_RootDirectory = NULL;
 uint32_t g_RootDirectoryEnd;
 
-bool readBootSector(FILE *disk)
+bool FAT_ReadBootSector(DISK *disk)
 {
-    return fread(&g_BootSector, sizeof(g_BootSector), 1, disk) > 0;
+    return DISK_ReadSectors(disk, 0, 1, g_Data->BS.BootSectorBytes);
+}
+
+bool FAT_Initialize(DISK *disk)
+{
+    g_Data = ;
+
+    if (!FAT_ReadBootSector(disk))
+    {
+        printf("FAT: read boot sector failed\r\n");
+        return false;
+    }
 }
 
 bool readSectors(FILE *disk, uint32_t lba, uint32_t count, void *bufferOut)
