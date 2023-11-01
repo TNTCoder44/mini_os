@@ -1,6 +1,9 @@
 # Mini_os
 ## Building
 
+IMPORTANT: Note that you must have Open-Watcom 2.0 installed by now.
+
+
 First, install the following dependencies:
 
 ```sh
@@ -22,14 +25,18 @@ Then run:
 
 ```sh
 make         
+
 make -s
 ```
 
+## Running
 
 Finally, run:
 ```sh
 ./run.sh
 ```
+
+NOTE: you need qemu installed for this one
 
 
 
