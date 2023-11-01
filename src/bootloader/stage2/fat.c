@@ -1,5 +1,8 @@
 #include "fat.h"
+#include "stdio.h"
 #include "stdint.h"
+#include "memdefs.h"
+#include "utility.h"
 
 #define SECTOR_SIZE 512
 
@@ -46,9 +49,8 @@ typedef struct
 } FAT_Data;
 
 static FAT_Data far *g_Data;
-
-uint8_t *g_Fat = NULL;
-DirectoryEntry *g_RootDirectory = NULL;
+static uint8_t far *g_Fat = NULL;
+static FAT_DirectoryEntry far *g_RootDirectory = NULL;
 uint32_t g_RootDirectoryEnd;
 
 bool FAT_ReadBootSector(DISK *disk)
@@ -56,42 +58,63 @@ bool FAT_ReadBootSector(DISK *disk)
     return DISK_ReadSectors(disk, 0, 1, g_Data->BS.BootSectorBytes);
 }
 
+bool FAT_ReadFat(DISK *disk)
+{
+    return DISK_ReadSectors(disk, g_Data->BS.BootSector.ReservedSectors, g_Data->BS.BootSector.SectorsPerFat, g_Fat);
+}
+
+bool FAT_ReadRootDirectory(DISK *disk)
+{
+    uint32_t lba = g_Data->BS.BootSector.ReservedSectors + g_Data->BS.BootSector.SectorsPerFat * g_Data->BS.BootSector.FatCount;
+    uint32_t size = sizeof(FAT_DirectoryEntry) * g_Data->BS.BootSector.DirEntryCount;
+    uint32_t sectors = (size + g_Data->BS.BootSector.BytesPerSector) / g_Data->BS.BootSector.BytesPerSector;
+
+    g_RootDirectoryEnd = lba + sectors;
+    return readSectors(disk, lba, sectors, g_RootDirectory);
+}
+
 bool FAT_Initialize(DISK *disk)
 {
-    g_Data = ;
+    g_Data = (FAT_Data far *)MEMORY_FAT_ADDR;
 
+    // read boot sector
     if (!FAT_ReadBootSector(disk))
     {
         printf("FAT: read boot sector failed\r\n");
         return false;
     }
-}
 
-bool readSectors(FILE *disk, uint32_t lba, uint32_t count, void *bufferOut)
-{
-    bool ok = true;
-    ok = ok && (fseek(disk, lba * g_BootSector.BytesPerSector, SEEK_SET) == 0);
-    ok = ok && (fread(bufferOut, g_BootSector.BytesPerSector, count, disk) == count);
-    return ok;
-}
+    // read FAT
+    g_Fat = (uint8_t far *)g_Data + sizeof(FAT_Data);
+    uint32_t fatSize = g_Data->BS.BootSector.BytesPerSector * g_Data->BS.BootSector.SectorsPerFat;
+    if (sizeof(FAT_Data) + fatSize >= MEMORY_FAT_SIZE)
+    {
+        printf("FAT: not enough memory to read FAT! Required %lu, only have %lu\r\n", sizeof(FAT_Data) + fatSize, MEMORY_FAT_SIZE);
+        return false;
+    }
 
-bool readFat(FILE *disk)
-{
-    g_Fat = (uint8_t *)malloc(g_BootSector.SectorsPerFat * g_BootSector.BytesPerSector);
-    return readSectors(disk, g_BootSector.ReservedSectors, g_BootSector.SectorsPerFat, g_Fat);
-}
+    if (!FAT_ReadFat(disk))
+    {
+        printf("FAT: read FAT failed\r\n");
+        return false;
+    }
 
-bool readRootDirectory(FILE *disk)
-{
-    uint32_t lba = g_BootSector.ReservedSectors + g_BootSector.SectorsPerFat * g_BootSector.FatCount;
-    uint32_t size = sizeof(DirectoryEntry) * g_BootSector.DirEntryCount;
-    uint32_t sectors = (size / g_BootSector.BytesPerSector);
-    if (size % g_BootSector.BytesPerSector > 0)
-        sectors++;
+    // read root directory
+    g_RootDirectory = (FAT_DirectoryEntry far *)(g_Fat + fatSize);
+    uint32_t rootDirSize = sizeof(FAT_DirectoryEntry) * g_Data->BS.BootSector.DirEntryCount;
+    rootDirSize = align(rootDirSize, g_Data->BS.BootSector.BytesPerSector);
 
-    g_RootDirectoryEnd = lba + sectors;
-    g_RootDirectory = (DirectoryEntry *)malloc(sectors * g_BootSector.BytesPerSector);
-    return readSectors(disk, lba, sectors, g_RootDirectory);
+    if (sizeof(FAT_Data) + fatSize + rootDirSize >= MEMORY_FAT_SIZE)
+    {
+        printf("FAT: not enough memory to read root directory! Required %lu, only have %u\r\n", sizeof(FAT_Data) + fatSize + rootDirSize, MEMORY_FAT_SIZE);
+        return false;
+    }
+
+    if (!FAT_ReadRootDirectory(disk))
+    {
+        printf("FAT: read root directory failed\r\n");
+        return false;
+    }
 }
 
 DirectoryEntry *findFile(const char *name)
