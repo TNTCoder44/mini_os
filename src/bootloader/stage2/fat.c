@@ -117,6 +117,12 @@ bool FAT_Initialize(DISK *disk)
     }
 }
 
+FAT_File *FAT_Open(DISK *disk, const char *path)
+{
+    if (path[0] == '/')
+        path++;
+}
+
 DirectoryEntry *findFile(const char *name)
 {
     for (uint32_t i = 0; i < g_BootSector.DirEntryCount; i++)
