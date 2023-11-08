@@ -135,6 +135,8 @@ bool FAT_Initialize(DISK *disk)
     // reset opened files
     for (int i = 0; i < MAX_FILE_HANDLES; i++)
         g_Data->OpenedFiles[i].Opened = false;
+
+    return true;
 }
 
 uint32_t FAT_ClusterToLba(uint32_t cluster)
