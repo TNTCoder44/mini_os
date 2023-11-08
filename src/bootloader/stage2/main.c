@@ -1,5 +1,7 @@
 #include "stdint.h"
 #include "stdio.h"
+#include "disk.h"
+#include "fat.h"
 
 void _cdecl cstart_(uint16_t bootDrive)
 {

@@ -3,6 +3,7 @@
   "files.associations": {
     "compare": "cpp",
     "cstdint": "cpp",
-    "string.h": "c"
+    "string.h": "c",
+    "*.inc": "c"
   }
 }
