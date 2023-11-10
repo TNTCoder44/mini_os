@@ -1,3 +1,2 @@
 stdint.h(19): Warning! W138: No newline at end of file
-memory.c(12): Warning! W107: Missing return value for function 'memcpy'
-memory.c(20): Warning! W111: Meaningless use of an expression
+memory.c(22): Warning! W111: Meaningless use of an expression

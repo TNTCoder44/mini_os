@@ -1,10 +1,9 @@
 Open Watcom Linker Version 2.0 beta Jun  2 2022 00:47:52 (32-bit)
 Copyright (c) 2002-2022 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/11/08 21:14:42
+Created on:       23/11/10 17:03:38
 Executable Image: /home/janis/Dokumente/mini_os/build/stage2.bin
 creating a RAW Binary Image executable
-Error! E2028: __U4M is an undefined reference
 
 
                         +------------+
@@ -14,7 +13,7 @@ Error! E2028: __U4M is an undefined reference
 Group                           Address              Size
 =====                           =======              ====
 
-DGROUP                          00001888             0000017c
+DGROUP                          000018b4             0000017c
 
 
 
@@ -26,11 +25,11 @@ Segment                Class          Group          Address         Size
 =======                =====          =====          =======         ====
 
 _ENTRY                 CODE           AUTO           00000000        00000013
-_TEXT                  CODE           AUTO           00000013        00001875
-CONST                  DATA           DGROUP         00001888        0000015d
-CONST2                 DATA           DGROUP         000019e6        00000011
-_DATA                  DATA           DGROUP         000019f8        00000004
-_BSS                   BSS            DGROUP         000019fc        00000008
+_TEXT                  CODE           AUTO           00000013        000018a1
+CONST                  DATA           DGROUP         000018b4        0000015d
+CONST2                 DATA           DGROUP         00001a12        00000011
+_DATA                  DATA           DGROUP         00001a24        00000004
+_BSS                   BSS            DGROUP         00001a28        00000008
 
 
                         +----------------+
@@ -47,49 +46,50 @@ Module: /home/janis/Dokumente/mini_os/build/stage2/asm/main.obj(main.asm)
 00000000       entry
 Module: /home/janis/Dokumente/mini_os/build/stage2/asm/x86.obj(x86.asm)
 00000013       __U4D
-0000003a       _x86_div64_32
-00000067       _x86_Video_WriteCharTeletype
-0000007a       _x86_Disk_Reset
-0000008f       _x86_Disk_Read
-000000c4       _x86_Disk_GetDriveParams
+0000003a       __U4M
+00000054       _x86_div64_32
+00000081       _x86_Video_WriteCharTeletype
+00000094       _x86_Disk_Reset
+000000a9       _x86_Disk_Read
+000000de       _x86_Disk_GetDriveParams
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/ctype.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/ctype.c)
-00000108+      islower_
-00000146       toupper_
+00000122+      islower_
+00000160       toupper_
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/disk.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/disk.c)
-0000018e       DISK_Initialize_
-0000020a+      DISK_LBA2CHS_
-000002bd       DISK_ReadSectors_
+000001a8       DISK_Initialize_
+00000224+      DISK_LBA2CHS_
+000002d7       DISK_ReadSectors_
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/fat.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/fat.c)
-0000035a+      FAT_ReadBootSector_
-0000038e+      FAT_ReadFat_
-000003d2       FAT_Initialize_
-00000626+      FAT_ClusterToLba_
-0000067c+      FAT_OpenEntry_
-0000082a+      FAT_NextCluster_
-000008bb+      FAT_Read_
-00000be0       FAT_ReadEntry_
-00000c39       FAT_Close_
-00000cb7+      FAT_FindFile_
-00000dd6       FAT_Open_
+00000374+      FAT_ReadBootSector_
+000003a8+      FAT_ReadFat_
+000003ec       FAT_Initialize_
+00000640+      FAT_ClusterToLba_
+00000696+      FAT_OpenEntry_
+00000844+      FAT_NextCluster_
+000008d5+      FAT_Read_
+00000bfa       FAT_ReadEntry_
+00000c53       FAT_Close_
+00000cd1+      FAT_FindFile_
+00000df0       FAT_Open_
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/main.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/main.c)
-00000f50       _cstart_
+00000f6a       _cstart_
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/memory.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/memory.c)
-0000100e       memcpy_
-00001074       memset_
-000010d6       memcmp_
+00001028       memcpy_
+000010a0       memset_
+00001102       memcmp_
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/stdio.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/stdio.c)
-00001153       putc_
-0000117a+      puts_
-000011b1+      puts_f_
-000011ee       _printf
-00001471+      printf_number_
-000019e6+      _g_HexChars
+0000117f       putc_
+000011a6+      puts_
+000011dd+      puts_f_
+0000121a       _printf
+0000149d+      printf_number_
+00001a12+      _g_HexChars
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/string.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/string.c)
-000016e5       strchr_
-00001740+      strcpy_
-000017b4       strlen_
+00001711       strchr_
+0000176c+      strcpy_
+000017e0       strlen_
 Module: /home/janis/Dokumente/mini_os/build/stage2/c/utility.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/utility.c)
-000017ef+      align_
+0000181b+      align_
 
 
                         +---------------------+
@@ -103,56 +103,56 @@ Module          Segment               Class           Address         Size
 ======          =======               =====           =======         ====
 
 main.asm        _ENTRY                CODE           00000000         00000013
-x86.asm         _TEXT                 CODE           00000013         000000f5
+x86.asm         _TEXT                 CODE           00000013         0000010f
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/ctype.c
-                _TEXT                 CODE           00000108         00000086
-                CONST                 DATA           00001888         00000000
-                CONST2                DATA           000019e6         00000000
-                _DATA                 DATA           000019f8         00000000
+                _TEXT                 CODE           00000122         00000086
+                CONST                 DATA           000018b4         00000000
+                CONST2                DATA           00001a12         00000000
+                _DATA                 DATA           00001a24         00000000
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/disk.c
-                _TEXT                 CODE           0000018e         000001cc
-                CONST                 DATA           00001888         00000000
-                CONST2                DATA           000019e6         00000000
-                _DATA                 DATA           000019f8         00000000
+                _TEXT                 CODE           000001a8         000001cc
+                CONST                 DATA           000018b4         00000000
+                CONST2                DATA           00001a12         00000000
+                _DATA                 DATA           00001a24         00000000
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/fat.c
-                _TEXT                 CODE           0000035a         00000bf6
-                CONST                 DATA           00001888         00000131
-                CONST2                DATA           000019e6         00000000
-                _DATA                 DATA           000019f8         00000004
-                _BSS                  BSS            000019fc         00000008
+                _TEXT                 CODE           00000374         00000bf6
+                CONST                 DATA           000018b4         00000131
+                CONST2                DATA           00001a12         00000000
+                _DATA                 DATA           00001a24         00000004
+                _BSS                  BSS            00001a28         00000008
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/main.c
-                _TEXT                 CODE           00000f50         000000be
-                CONST                 DATA           000019ba         0000002b
-                CONST2                DATA           000019e6         00000000
-                _DATA                 DATA           000019fc         00000000
+                _TEXT                 CODE           00000f6a         000000be
+                CONST                 DATA           000019e6         0000002b
+                CONST2                DATA           00001a12         00000000
+                _DATA                 DATA           00001a28         00000000
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/memory.c
-                _TEXT                 CODE           0000100e         00000145
-                CONST                 DATA           000019e6         00000000
-                CONST2                DATA           000019e6         00000000
-                _DATA                 DATA           000019fc         00000000
+                _TEXT                 CODE           00001028         00000157
+                CONST                 DATA           00001a12         00000000
+                CONST2                DATA           00001a12         00000000
+                _DATA                 DATA           00001a28         00000000
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/stdio.c
-                _TEXT                 CODE           00001153         00000592
-                CONST                 DATA           000019e6         00000000
-                CONST2                DATA           000019e6         00000011
-                _DATA                 DATA           000019fc         00000000
+                _TEXT                 CODE           0000117f         00000592
+                CONST                 DATA           00001a12         00000000
+                CONST2                DATA           00001a12         00000011
+                _DATA                 DATA           00001a28         00000000
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/string.c
-                _TEXT                 CODE           000016e5         0000010a
-                CONST                 DATA           000019e6         00000000
-                CONST2                DATA           000019f8         00000000
-                _DATA                 DATA           000019fc         00000000
+                _TEXT                 CODE           00001711         0000010a
+                CONST                 DATA           00001a12         00000000
+                CONST2                DATA           00001a24         00000000
+                _DATA                 DATA           00001a28         00000000
 /home/janis/Dokumente/mini_os/src/bootloader/stage2/utility.c
-                _TEXT                 CODE           000017ef         00000099
-                CONST                 DATA           000019e6         00000000
-                CONST2                DATA           000019f8         00000000
-                _DATA                 DATA           000019fc         00000000
+                _TEXT                 CODE           0000181b         00000099
+                CONST                 DATA           00001a12         00000000
+                CONST2                DATA           00001a24         00000000
+                _DATA                 DATA           00001a28         00000000
 Warning! W1014: stack segment not found
 
 
-                        +---------------------------+
-                        |   Unresolved References   |
-                        +---------------------------+
+                        +-----------------------+
+                        |   Linker Statistics   |
+                        +-----------------------+
 
-Undefined Symbol                Referenced by
-================                =============
-
-__U4M                           /home/janis/Dokumente/mini_os/build/stage2/c/fat.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/fat.c)
+Stack size:  0200 (512.)
+Memory size:  1a30 (6704.)
+Entry point address: 00000000
+Link time: 00:00.00
