@@ -3,6 +3,8 @@ bits 16
 
 
 %define ENDL 0x0D, 0x0A
+
+
 ;
 ; FAT12 header
 ; 
@@ -148,7 +150,7 @@ start:
     mov ax, [stage2_cluster]
     
     ; not nice :( hardcoded value
-    add ax, 31                          ; first cluster = (kernel_cluster - 2) * sectors_per_cluster + start_sector
+    add ax, 31                          ; first cluster = (stage2_cluster - 2) * sectors_per_cluster + start_sector
                                         ; start sector = reserved + fats + root directory size = 1 + 18 + 134 = 33
     mov cl, 1
     mov dl, [ebr_drive_number]

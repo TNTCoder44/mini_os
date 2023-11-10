@@ -1,5 +1,4 @@
 #pragma once
-
 #include "stdint.h"
 
 bool islower(char chr);
