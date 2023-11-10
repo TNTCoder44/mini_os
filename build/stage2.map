@@ -1,8 +1,8 @@
 Open Watcom Linker Version 2.0 beta Jun  2 2022 00:47:52 (32-bit)
 Copyright (c) 2002-2022 The Open Watcom Contributors. All Rights Reserved.
 Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
-Created on:       23/11/10 23:08:28
-Executable Image: /home/janis/Downloads/nanobyte_os-Part6/build/stage2.bin
+Created on:       23/11/10 23:12:42
+Executable Image: /home/janis/Dokumente/mini_os/build/stage2.bin
 creating a RAW Binary Image executable
 
 
@@ -42,9 +42,9 @@ _BSS                   BSS            DGROUP         00001be0        00000008
 Address        Symbol
 =======        ======
 
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/asm/main.obj(main.asm)
+Module: /home/janis/Dokumente/mini_os/build/stage2/asm/main.obj(main.asm)
 00000000       entry
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/asm/x86.obj(x86.asm)
+Module: /home/janis/Dokumente/mini_os/build/stage2/asm/x86.obj(x86.asm)
 00000013       __U4D
 0000003a       __U4M
 00000054       _x86_div64_32
@@ -52,14 +52,14 @@ Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/asm/x86.obj(x86.asm
 00000095       _x86_Disk_Reset
 000000aa       _x86_Disk_Read
 000000e1       _x86_Disk_GetDriveParams
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/ctype.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/ctype.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/ctype.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/ctype.c)
 00000125+      islower_
 00000163       toupper_
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/disk.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/disk.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/disk.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/disk.c)
 000001ab       DISK_Initialize_
 00000221+      DISK_LBA2CHS_
 000002d4       DISK_ReadSectors_
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/fat.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/fat.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/fat.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/fat.c)
 00000371+      FAT_ReadBootSector_
 000003a5+      FAT_ReadFat_
 000003e9       FAT_Initialize_
@@ -71,14 +71,14 @@ Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/fat.obj(/home/jan
 00000c9a       FAT_Close_
 00000d18+      FAT_FindFile_
 00000e52       FAT_Open_
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/main.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/main.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/main.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/main.c)
 00000fcc       _cstart_
 00001bdc+      _g_data
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/memory.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/memory.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/memory.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/memory.c)
 0000117b       memcpy_
 000011f3       memset_
 00001252       memcmp_
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/stdio.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/stdio.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/stdio.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/stdio.c)
 000012cf       putc_
 000012f6+      puts_
 0000132d+      puts_f_
@@ -86,11 +86,11 @@ Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/stdio.obj(/home/j
 000015ed+      printf_number_
 00001861+      print_buffer_
 00001bc6+      _g_HexChars
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/string.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/string.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/string.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/string.c)
 000018dd       strchr_
 00001938+      strcpy_
 000019ac       strlen_
-Module: /home/janis/Downloads/nanobyte_os-Part6/build/stage2/c/utility.obj(/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/utility.c)
+Module: /home/janis/Dokumente/mini_os/build/stage2/c/utility.obj(/home/janis/Dokumente/mini_os/src/bootloader/stage2/utility.c)
 000019e7+      align_
 
 
@@ -106,43 +106,43 @@ Module          Segment               Class           Address         Size
 
 main.asm        _ENTRY                CODE           00000000         00000013
 x86.asm         _TEXT                 CODE           00000013         00000112
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/ctype.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/ctype.c
                 _TEXT                 CODE           00000125         00000086
                 CONST                 DATA           00001a80         00000000
                 CONST2                DATA           00001bc6         00000000
                 _DATA                 DATA           00001bd8         00000000
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/disk.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/disk.c
                 _TEXT                 CODE           000001ab         000001c6
                 CONST                 DATA           00001a80         00000000
                 CONST2                DATA           00001bc6         00000000
                 _DATA                 DATA           00001bd8         00000000
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/fat.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/fat.c
                 _TEXT                 CODE           00000371         00000c5b
                 CONST                 DATA           00001a80         00000107
                 CONST2                DATA           00001bc6         00000000
                 _DATA                 DATA           00001bd8         00000004
                 _BSS                  BSS            00001be0         00000008
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/main.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/main.c
                 _TEXT                 CODE           00000fcc         000001af
                 CONST                 DATA           00001b88         0000003a
                 CONST2                DATA           00001bc6         00000000
                 _DATA                 DATA           00001bdc         00000004
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/memory.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/memory.c
                 _TEXT                 CODE           0000117b         00000154
                 CONST                 DATA           00001bc2         00000000
                 CONST2                DATA           00001bc6         00000000
                 _DATA                 DATA           00001be0         00000000
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/stdio.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/stdio.c
                 _TEXT                 CODE           000012cf         0000060e
                 CONST                 DATA           00001bc2         00000003
                 CONST2                DATA           00001bc6         00000011
                 _DATA                 DATA           00001be0         00000000
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/string.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/string.c
                 _TEXT                 CODE           000018dd         0000010a
                 CONST                 DATA           00001bc6         00000000
                 CONST2                DATA           00001bd8         00000000
                 _DATA                 DATA           00001be0         00000000
-/home/janis/Downloads/nanobyte_os-Part6/src/bootloader/stage2/utility.c
+/home/janis/Dokumente/mini_os/src/bootloader/stage2/utility.c
                 _TEXT                 CODE           000019e7         00000099
                 CONST                 DATA           00001bc6         00000000
                 CONST2                DATA           00001bd8         00000000
