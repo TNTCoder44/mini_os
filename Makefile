@@ -7,9 +7,13 @@ SRC_DIR=src
 TOOLS_DIR=tools
 BUILD_DIR=build
 
+include build_scripts/config.mk
+
 .PHONY: all floppy_image kernel bootloader clean always tools_fat
 
 all: floppy_image tools_fat
+
+include build_scripts/toolchain.mk
 
 #
 # Floppy image
