@@ -1,9 +1,12 @@
 {
-  "C_Cpp.default.compilerPath": "/usr/bin/watcom/binl/wcc",
+  "C_Cpp.default.compilerPath": "${workspaceFolder}/toolchain/i686-elf/bin/i686-elf-gcc",
   "files.associations": {
     "compare": "cpp",
     "cstdint": "cpp",
     "string.h": "c",
-    "*.inc": "c"
-  }
+    "*.inc": "c",
+    "stdint.h": "c",
+    "stdio.h": "c"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
