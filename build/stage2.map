@@ -67,7 +67,7 @@ LOAD /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.
                 0x00001475                memcpy
                 0x000014c7                memset
                 0x0000150a                memcmp
- .text          0x0000156a      0x891 /home/janis/coding/mini_os/build/stage2/c/stdio.obj
+ .text          0x0000156a      0x895 /home/janis/coding/mini_os/build/stage2/c/stdio.obj
                 0x0000156a                putchr
                 0x00001599                putcolor
                 0x000015cb                getchr
@@ -80,12 +80,12 @@ LOAD /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.
                 0x0000193b                printf_unsigned
                 0x000019f4                printf_signed
                 0x00001a51                printf
-                0x00001d62                print_buffer
- .text          0x00001dfb       0xb6 /home/janis/coding/mini_os/build/stage2/c/string.obj
-                0x00001dfb                strchr
-                0x00001e39                strcpy
-                0x00001e8b                strlen
- *fill*         0x00001eb1        0xf 
+                0x00001d66                print_buffer
+ .text          0x00001dff       0xb6 /home/janis/coding/mini_os/build/stage2/c/string.obj
+                0x00001dff                strchr
+                0x00001e3d                strcpy
+                0x00001e8f                strlen
+ *fill*         0x00001eb5        0xb 
  .text          0x00001ec0      0x12a /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.0/libgcc.a(_udivdi3.o)
                 0x00001ec0                __udivdi3
  *fill*         0x00001fea        0x6 
@@ -183,16 +183,16 @@ OUTPUT(/home/janis/coding/mini_os/build/stage2.bin binary)
  .debug_aranges
                 0x00000100       0x20 /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.0/libgcc.a(_umoddi3.o)
 
-.debug_line     0x00000000      0xf91
+.debug_line     0x00000000      0xf94
  .debug_line    0x00000000       0x88 /home/janis/coding/mini_os/build/stage2/c/ctype.obj
  .debug_line    0x00000088       0xf2 /home/janis/coding/mini_os/build/stage2/c/disk.obj
  .debug_line    0x0000017a      0x4d7 /home/janis/coding/mini_os/build/stage2/c/fat.obj
  .debug_line    0x00000651       0xab /home/janis/coding/mini_os/build/stage2/c/main.obj
  .debug_line    0x000006fc       0xe8 /home/janis/coding/mini_os/build/stage2/c/memory.obj
- .debug_line    0x000007e4      0x3c8 /home/janis/coding/mini_os/build/stage2/c/stdio.obj
- .debug_line    0x00000bac       0x97 /home/janis/coding/mini_os/build/stage2/c/string.obj
- .debug_line    0x00000c43      0x179 /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.0/libgcc.a(_udivdi3.o)
- .debug_line    0x00000dbc      0x1d5 /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.0/libgcc.a(_umoddi3.o)
+ .debug_line    0x000007e4      0x3cb /home/janis/coding/mini_os/build/stage2/c/stdio.obj
+ .debug_line    0x00000baf       0x97 /home/janis/coding/mini_os/build/stage2/c/string.obj
+ .debug_line    0x00000c46      0x179 /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.0/libgcc.a(_udivdi3.o)
+ .debug_line    0x00000dbf      0x1d5 /home/janis/coding/mini_os/toolchain/i686-elf/bin/../lib/gcc/i686-elf/11.2.0/libgcc.a(_umoddi3.o)
 
 .debug_str      0x00000000     0x12a8
  .debug_str     0x00000000       0xea /home/janis/coding/mini_os/build/stage2/c/ctype.obj

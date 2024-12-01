@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdint.h>
-#include "x86.h"
+#include "arch/i686/io.h"
 
 const unsigned SCREEN_WIDTH = 80;
 const unsigned SCREEN_HEIGHT = 25;
@@ -327,6 +327,7 @@ void printf(const char *fmt, ...)
             length = PRINTF_LENGTH_DEFAULT;
             radix = 10;
             sign = false;
+            number = false;
             break;
         }
 

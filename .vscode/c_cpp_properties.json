@@ -3,16 +3,19 @@
         {
             "name": "GCC",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/kernel",
+                "${workspaceFolder}/toolchain/i686-elf/lib/gcc/i686-elf/11.2.0/include"
             ],
-            "defines": [],
-            "intelliSenseMode": "linux-gcc-x86",
+            "defines": [
+            ],
             "compilerPath": "${workspaceFolder}/toolchain/i686-elf/bin/i686-elf-gcc",
-            "compilerArgs": [
-                "-std=c99 -ffrestanding -nostdlib"
-            ],
             "cStandard": "c99",
-            "cppStandard": "c++14"
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x86",
+            "compilerArgs": [
+                "-std=c99", "-ffreestanding", "-nostdlib"
+            ]
         }
     ],
     "version": 4
