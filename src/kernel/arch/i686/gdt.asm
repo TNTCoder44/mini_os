@@ -10,7 +10,7 @@ i686_GDT_Load:
 
     ; load gdt 
     mov eax, [ebp + 8]
-    ldgt [eax]
+    lgdt [eax]
 
     ; reload code segment 
     mov eax, [ebp + 12]
@@ -24,7 +24,7 @@ i686_GDT_Load:
     mov ax, [ebp + 16]
     mov ds, ax 
     mov es, ax 
-    mov fd, ax
+    mov fs, ax
     mov gs, ax
     mov ss, ax
 

@@ -1,9 +1,7 @@
 org 0x7C00
 bits 16
 
-
 %define ENDL 0x0D, 0x0A
-
 
 ;
 ; FAT12 header
@@ -39,7 +37,7 @@ ebr_system_id:              db 'FAT12   '           ; 8 bytes
 
 start:
     ; setup data segments
-    mov ax, 0           ; can't set ds/es directly
+    mov ax, 0                   ; can't set ds/es directly
     mov ds, ax
     mov es, ax
     

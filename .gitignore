@@ -3,3 +3,6 @@ toolchain/
 *.err
 .cache/
 compile_commands.json
+.clangd
+.asm-lsp.toml
+src/bootloader/stage1/.asm-lsp.toml
